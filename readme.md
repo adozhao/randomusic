@@ -7,8 +7,7 @@ electron构建的音乐播放器，适合追求简单随心听~
 ```
 npm i
 npm run serve
-
-npm run electron:build #打包为exe文件
+npm run electron:build
 ```
 ### 预览
 ![](https://github.com/github-ado/simple-player/blob/main/screenshots/1.png)  
