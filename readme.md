@@ -10,8 +10,8 @@ npm run serve
 npm run electron:build
 ```
 ### 预览
-![](https://github.com/github-ado/simple-player/blob/main/screenshots/1.png)  
-![](https://github.com/github-ado/simple-player/blob/main/screenshots/2.png)  
+![](https://github.com/adozhao/simple-player/blob/main/screenshots/1.png)  
+![](https://github.com/adozhao/simple-player/blob/main/screenshots/2.png)  
 
 
 
