@@ -5,7 +5,7 @@ module.exports = {
             builderOptions: {
                 "appId": "com.example.app",
                 "productName": "随心听", // 项目名，也是生成的安装文件名
-                "copyright": "Copyright © 2023", // 版权信息
+                "copyright": "Copyright © 2024", // 版权信息
                 "directories": {
                     "output": "./dist_electron"// 输出文件路径
                 },
