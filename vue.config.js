@@ -29,7 +29,7 @@ module.exports = {
                     "installerHeaderIcon": "./icon.ico", // 安装时头部图标
                     "createDesktopShortcut": true, // 创建桌面图标
                     "createStartMenuShortcut": true, // 创建开始菜单图标
-                    "shortcutName": "随身听", // 图标名称
+                    "shortcutName": "随心听", // 图标名称
                 },
             }
         }
