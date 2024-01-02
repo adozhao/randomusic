@@ -1,6 +1,8 @@
 {
   "name": "randomusic",
   "version": "0.1.0",
+  "author": "ado",
+  "description": "random music player",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
