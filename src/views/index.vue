@@ -1,8 +1,14 @@
 <template>
   <div class="container">
-    <div class="music-box" :class="{ rotate: isRotate }">
-      <img class="pic" :src="audio.picurl" />
-      <audio ref="player" :src="audio.url"></audio>
+    <div class="card-box">
+      <img class="pic" :class="{ rotate: isRotate }" :src="audio.picurl" />
+    </div>
+    <audio ref="player" :src="audio.url"></audio>
+    <div class="info-box">
+      <div class="box">
+        <div class="name">{{ audio.name }}</div>
+        <div class="text">{{ audio.artistsname }}</div>
+      </div>
     </div>
     <div class="play-btn" @click="onPlayBtn()">
       <i v-show="isPlaying" class="iconfont icon-pause"></i>
@@ -16,7 +22,12 @@ import { ipcRenderer, remote } from 'electron'
 export default {
   data() {
     return {
-      audio: {},
+      audio: {
+        artistsname: '',
+        name: '',
+        picurl: '',
+        url: '',
+      },
       isPlaying: false,
       musicType: "热歌榜",
       isRotate: false,
@@ -188,21 +199,45 @@ export default {
 };
 </script>
 <style lang="scss">
-body {
-  background-image: url("../../public/images/bg.jpg");
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  overflow: hidden;
+*{
+  margin: 0;
+  padding: 0;
 }
-.music-box {
-  user-select: none;
-  &.rotate {
-    animation: rotate 18s linear infinite;
+.info-box{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: absolute;
+  top: 50%;
+  right: 50px;
+  width: 300px;
+  height: 300px;
+  background-color: #ffffff59;
+  text-align: center;
+  color: #fff;
+  border-radius: 100%;
+  transform: translateY(-50%);
+  .box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    .name{
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 22px;
+    }
+    .text{
+      font-size: 24px;
+    }
   }
 }
 .container {
-  border-radius: 100%;
-  overflow: hidden;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
 }
 .play-btn {
   position: absolute;
@@ -215,11 +250,21 @@ body {
     color: rgba(255, 255, 255, 0.4);
   }
 }
-.pic {
-  display: block;
-  width: 100%;
-  height: 100%;
-  filter: blur(4px);
+.card-box{
+  position: absolute;
+  top: 50%;
+  width: 300px;
+  height: 300px;
+  transform: translate(50px, -50%);
+  .pic {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    &.rotate {
+      animation: rotate 18s linear infinite;
+    }
+  }
 }
 @keyframes rotate {
   from {
