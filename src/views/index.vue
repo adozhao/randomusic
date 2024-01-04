@@ -1,19 +1,23 @@
 <template>
   <div class="container">
-    <div class="card-box">
-      <img class="pic" :class="{ rotate: isRotate }" :src="audio.picurl" />
+    <div class="left-box">
+      <div class="card-box">
+        <img class="pic" :class="{ rotate: isRotate }" :src="audio.picurl" />
+      </div>
+    </div>
+    <div class="control-box">
+      <div class="play-btn" @click="onPlayBtn()">
+        <i v-show="isPlaying" class="iconfont icon-pause"></i>
+        <i v-show="!isPlaying" class="iconfont icon-play"></i>
+      </div>
+      <i class="iconfont icon-next" @click="getMusic"></i>
     </div>
     <audio ref="player" :src="audio.url"></audio>
     <div class="info-box">
-      <div class="box">
-        <div class="name">{{ audio.name }}</div>
-        <div class="text">{{ audio.artistsname }}</div>
-      </div>
+      <div class="name">{{ audio.name }}</div>
+      <div class="text">{{ audio.artistsname }}</div>
     </div>
-    <div class="play-btn" @click="onPlayBtn()">
-      <i v-show="isPlaying" class="iconfont icon-pause"></i>
-      <i v-show="!isPlaying" class="iconfont icon-play"></i>
-    </div>
+    
   </div>
 </template>
 <script>
@@ -204,34 +208,27 @@ export default {
   padding: 0;
 }
 .info-box{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  position: absolute;
-  top: 50%;
-  right: 50px;
-  width: 300px;
-  height: 300px;
-  background-color: #ffffff59;
-  text-align: center;
-  color: #fff;
-  border-radius: 100%;
-  transform: translateY(-50%);
-  .box{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    transform: translate(-50%, -50%);
+    writing-mode: tb-rl;
+    letter-spacing: 6px;
     .name{
+      position: absolute;
+      top: 30%;
+      right: 40px;
+      color: #fff;
+      text-align: center;
+      transform: translate(-50%, -50%);
       font-size: 36px;
       font-weight: bold;
-      margin-bottom: 22px;
     }
     .text{
+      position: absolute;
+      top: 50%;
+      right: 100px;
+      color: #fff;
+      text-align: center;
+      transform: translate(-50%, -50%);
       font-size: 24px;
     }
-  }
 }
 .container {
   position: relative;
@@ -239,30 +236,43 @@ export default {
   height: 100vh;
   background-color: #000;
 }
-.play-btn {
+.control-box{
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  cursor: pointer;
-  .iconfont {
-    font-size: 80px;
-    color: rgba(255, 255, 255, 0.4);
+  bottom: 30px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .play-btn {
+    cursor: pointer;
+    .iconfont {
+      font-size: 40px;
+      color: #fff;
+    }
+  }
+  .icon-next{
+    font-size: 48px !important;
+    color: #fff;
+    padding-left: 20px;
+    cursor: pointer;
   }
 }
-.card-box{
-  position: absolute;
-  top: 50%;
-  width: 300px;
-  height: 300px;
-  transform: translate(50px, -50%);
-  .pic {
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 100%;
-    &.rotate {
-      animation: rotate 18s linear infinite;
+.left-box{
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px;
+  padding-left: 50px;
+  .card-box{
+    width: 300px;
+    height: 300px;
+    .pic {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 100%;
+      &.rotate {
+        animation: rotate 18s linear infinite;
+      }
     }
   }
 }
